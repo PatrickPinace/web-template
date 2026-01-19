@@ -1,6 +1,10 @@
 # Dependencies
+node_modules/
 **/node_modules/
-**/pnpm-lock.yaml
+
+# Lock files - keep root, ignore sub-packages
+justyna-serafin/pnpm-lock.yaml
+justyna-serafin-v2/pnpm-lock.yaml
 **/package-lock.json
 
 # Build outputs

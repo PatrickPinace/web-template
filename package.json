@@ -1,0 +1,22 @@
+{
+  "name": "web-templates",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:v1": "pnpm --filter @web-templates/justyna-serafin dev",
+    "dev:v2": "pnpm --filter @web-templates/justyna-serafin-v2 dev",
+    "build": "pnpm -r build",
+    "build:v1": "pnpm --filter @web-templates/justyna-serafin build",
+    "build:v2": "pnpm --filter @web-templates/justyna-serafin-v2 build",
+    "preview": "pnpm -r --parallel preview",
+    "preview:v1": "pnpm --filter @web-templates/justyna-serafin preview",
+    "preview:v2": "pnpm --filter @web-templates/justyna-serafin-v2 preview",
+    "clean": "rm -rf **/node_modules **/dist **/.astro"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
