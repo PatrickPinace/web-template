@@ -39,12 +39,12 @@ jobs:
       - name: Build v1 (justyna-serafin)
         run: pnpm build:v1
         env:
-          BASE_PATH: /web-template/v1
+          BASE_PATH: /web-template/v1/
 
       - name: Build v2 (justyna-serafin-v2)
         run: pnpm build:v2
         env:
-          BASE_PATH: /web-template/v2
+          BASE_PATH: /web-template/v2/
 
       - name: Prepare deployment
         run: |
