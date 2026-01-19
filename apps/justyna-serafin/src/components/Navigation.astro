@@ -6,8 +6,8 @@ const navItems = [
   { name: 'O mnie', href: `${base}#o-mnie` },
   { name: 'Usługi', href: `${base}#uslugi` },
   { name: 'Cennik', href: `${base}cennik` },
-  { name: 'Blog', href: `${base}blog` },
-  { name: 'Aktualności', href: `${base}aktualnosci` },
+  { name: 'Artykuły', href: `${base}blog` },
+  // { name: 'Aktualności', href: `${base}aktualnosci` },
   { name: 'Kontakt', href: `${base}#kontakt` },
 ];
 ---
@@ -15,7 +15,8 @@ const navItems = [
 <nav class="bg-white shadow-md fixed w-full top-0 z-50">
   <div class="container mx-auto px-4 py-4">
     <div class="flex justify-between items-center">
-      <a href={base} class="text-2xl font-bold text-blue-600">
+      <a href={base} class="flex items-center gap-3 text-2xl font-bold text-blue-600">
+        <img src={`${base}logo.png`} alt="Logo" class="h-20 w-auto" />
         Justyna Serafin
       </a>
 

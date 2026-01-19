@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Justyna Serafin - Ortodonta">
@@ -15,11 +17,11 @@ import Footer from '../components/Footer.astro';
           <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Justyna Serafin
           </h1>
-          <p class="text-2xl text-gray-700 mb-4">Specjalista Ortodoncji</p>
+          <p class="text-2xl text-gray-700 mb-4">Lekarz dentysta</p>
           <p class="text-lg text-gray-600 mb-8">
             Leczenie ortodontyczne dzieci oraz dorosłych. Aparaty stałe, ruchome oraz alignery.
           </p>
-          <div class="flex gap-4">
+          <div class="flex flex-wrap gap-4">
             <a href="#kontakt" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
               Umów wizytę
             </a>
@@ -27,14 +29,30 @@ import Footer from '../components/Footer.astro';
               Dowiedz się więcej
             </a>
           </div>
+
+          <!-- Social Links -->
+          <div class="flex gap-4 mt-6">
+            <a href="https://www.instagram.com/dr_justyna_serafin/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-600 hover:text-pink-600 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span class="text-sm font-medium">Instagram</span>
+            </a>
+            <a href="https://www.znanylekarz.pl/justyna-serafin/stomatolog-stomatolog-dzieciecy/debica" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-600 hover:text-teal-600 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              <span class="text-sm font-medium">ZnanyLekarz</span>
+            </a>
+          </div>
         </div>
         <div class="hidden md:block">
-          <div class="bg-white p-8 rounded-2xl shadow-xl">
-            <div class="aspect-square bg-gradient-to-br from-blue-200 to-indigo-300 rounded-xl flex items-center justify-center">
-              <svg class="w-48 h-48 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
+          <div class="bg-white p-4 rounded-2xl shadow-xl">
+            <img
+              src={`${base}JustynaS.png`}
+              alt="Justyna Serafin - Ortodonta"
+              class="w-full h-auto rounded-xl object-cover"
+            />
           </div>
         </div>
       </div>
@@ -168,8 +186,25 @@ import Footer from '../components/Footer.astro';
               </div>
               <div>
                 <h3 class="text-xl font-bold text-gray-900 mb-2">Telefon</h3>
-                <a href="tel:+48XXXXXXXXX" class="text-blue-600 hover:text-blue-800">
-                  +48 XXX XXX XXX
+                <a href="tel:+48791728349" class="text-blue-600 hover:text-blue-800">
+                  +48 791 728 349
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Gabinet</h3>
+                <p class="text-gray-700 mb-1">ul. Wolności 23B lok. 64, Mielec</p>
+                <p class="text-gray-600 text-sm mb-2">Przyjmuję w gabinecie Primadentis</p>
+                <a href="https://primadentis.pl" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 font-medium">
+                  primadentis.pl →
                 </a>
               </div>
             </div>
@@ -179,7 +214,7 @@ import Footer from '../components/Footer.astro';
                 Umów się na konsultację ortodontyczną i poznaj możliwości leczenia
               </p>
               <div class="mt-4 text-center">
-                <a href="/cennik" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                <a href={`${base}cennik`} class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
                   Zobacz cennik
                 </a>
               </div>
