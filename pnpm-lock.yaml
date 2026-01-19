@@ -8,7 +8,7 @@ importers:
 
   .: {}
 
-  justyna-serafin:
+  apps/justyna-serafin:
     dependencies:
       '@tailwindcss/vite':
         specifier: ^4.1.18
@@ -20,7 +20,7 @@ importers:
         specifier: ^4.1.18
         version: 4.1.18
 
-  justyna-serafin-v2:
+  apps/justyna-serafin-v2:
     dependencies:
       '@tailwindcss/vite':
         specifier: ^4.1.18

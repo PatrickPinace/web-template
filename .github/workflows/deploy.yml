@@ -51,8 +51,8 @@ jobs:
       - name: Prepare deployment
         run: |
           mkdir -p _site
-          cp -r justyna-serafin/dist _site/v1
-          cp -r justyna-serafin-v2/dist _site/v2
+          cp -r apps/justyna-serafin/dist _site/v1
+          cp -r apps/justyna-serafin-v2/dist _site/v2
           cp .nojekyll _site/
 
       - name: Create index page
