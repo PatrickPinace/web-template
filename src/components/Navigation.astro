@@ -2,14 +2,14 @@
 const base = import.meta.env.BASE_URL;
 
 const navItems = [
-  { name: 'Start', href: base },
-  { name: 'O mnie', href: `${base}#o-mnie` },
-  { name: 'Usługi', href: `${base}#uslugi` },
-  { name: 'Cennik', href: `${base}#cennik` },
-  { name: 'Opinie', href: `${base}#opinie` },
-  // { name: 'Artykuły', href: `${base}blog` },
-  // { name: 'Aktualności', href: `${base}aktualnosci` },
-  { name: 'Kontakt', href: `${base}#kontakt` },
+  { name: 'Start', href: base, sectionId: 'start' },
+  { name: 'O mnie', href: `${base}#o-mnie`, sectionId: 'o-mnie' },
+  { name: 'Usługi', href: `${base}#uslugi`, sectionId: 'uslugi' },
+  { name: 'Cennik', href: `${base}#cennik`, sectionId: 'cennik' },
+  { name: 'Opinie', href: `${base}#opinie`, sectionId: 'opinie' },
+  // { name: 'Artykuły', href: `${base}blog`, sectionId: 'blog' },
+  // { name: 'Aktualności', href: `${base}aktualnosci`, sectionId: 'aktualnosci' },
+  { name: 'Kontakt', href: `${base}#kontakt`, sectionId: 'kontakt' },
 ];
 ---
 
@@ -26,7 +26,8 @@ const navItems = [
           <li>
             <a
               href={item.href}
-              class="text-gray-700 hover:text-blue-600 transition-colors duration-300"
+              data-section={item.sectionId}
+              class="nav-link px-3 py-1.5 rounded-md text-gray-700 hover:text-blue-600 transition-all duration-300"
             >
               {item.name}
             </a>
@@ -53,7 +54,8 @@ const navItems = [
           <li>
             <a
               href={item.href}
-              class="block text-gray-700 hover:text-blue-600 transition-colors duration-300"
+              data-section={item.sectionId}
+              class="nav-link block px-3 py-1.5 rounded-md text-gray-700 hover:text-blue-600 transition-all duration-300"
             >
               {item.name}
             </a>
@@ -64,11 +66,95 @@ const navItems = [
   </div>
 </nav>
 
+<style>
+  .nav-link.active {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: rgb(37, 99, 235);
+  }
+</style>
+
 <script>
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
 
   mobileMenuButton?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Active section tracking
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  // Map section IDs to nav links
+  const sectionToLink = new Map<string, Element[]>();
+  navLinks.forEach(link => {
+    const sectionId = link.getAttribute('data-section');
+    if (sectionId) {
+      if (!sectionToLink.has(sectionId)) {
+        sectionToLink.set(sectionId, []);
+      }
+      sectionToLink.get(sectionId)?.push(link);
+    }
+  });
+
+  // Track which section is currently active
+  let currentSection = 'start';
+
+  const setActiveSection = (sectionId: string) => {
+    if (currentSection === sectionId) return;
+    currentSection = sectionId;
+
+    // Remove active class from all links
+    navLinks.forEach(link => link.classList.remove('active'));
+
+    // Add active class to matching links
+    const activeLinks = sectionToLink.get(sectionId);
+    activeLinks?.forEach(link => link.classList.add('active'));
+  };
+
+  // Intersection Observer for sections
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActiveSection(entry.target.id);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
+
+  // Handle hero/start section (check if we're at the top)
+  const heroSection = document.querySelector('section:first-of-type');
+  if (heroSection) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && window.scrollY < 100) {
+          setActiveSection('start');
+        }
+      });
+    }, { threshold: 0.5 });
+
+    heroObserver.observe(heroSection);
+  }
+
+  // Set initial active state
+  if (window.scrollY < 100) {
+    setActiveSection('start');
+  }
+
+  // Close mobile menu when clicking a link
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
   });
 </script>
